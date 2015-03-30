@@ -89,7 +89,8 @@ $imprint = OOArticle::getArticleById(7);
         <div class="container">
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <ul class="list-inline center-block">
-                    <li><a href="https://www.facebook.com/mellowartsinnsbruck" target="_blank"><img src="<?php echo seo42::getIconFile('soc_fb.png'); ?>"></a></li>
+                    <li><a href="https://www.facebook.com/mellowartsinnsbruck" target="_blank"><img src="<?php echo seo42::getIconFile('fb.png'); ?>"></a></li>
+                    <li><a href="https://instagram.com/mellow.arts/" target="_blank"><img src="<?php echo seo42::getIconFile('in.png'); ?>"></a></li>
                 </ul>
 
             </div>
