@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    $('.focuspoint').focusPoint();
-
     updateHeaderHeight();
     $(window).resize(updateHeaderHeight);
 
@@ -23,6 +21,8 @@ $(document).ready(function() {
     $('.gmapsContainer .overlay').click(function () {
         $(this).remove();
     });
+
+    $('.focuspoint').focusPoint();
 });
 
 function scrollToContent() {
