@@ -7,7 +7,7 @@ $cssFiles[] = "main.less";
 
 $isSsa = $article->getId() == $ssa->getId();
 
-//$headerImages = array_filter(explode(",", getHierarchicalVar("art_header_images", $article, $ssa)));
+$headerImage = getHierarchicalVar("art_header_image", $article, $ssa);
 $video = getHierarchicalVar("art_video", $article, $ssa);
 
 $imprint = OOArticle::getArticleById(7);
@@ -61,18 +61,44 @@ $imprint = OOArticle::getArticleById(7);
             </div>
         </div>
 
-        <header class="masthead">
+        <?php
+        $headerImageClass = "";
+        if(!$isSsa) {
+            $headerImageClass = "subSite";
+        }
+        ?>
+        <header class="masthead <?php echo $headerImageClass; ?>">
             <div class="logo">
                 <a href="<?php echo $ssa->getUrl(); ?>">
                     <img src="<?php echo seo42::getImageFile('logo_invert.png'); ?>" />
                 </a>
             </div>
 
-            <?php if($video) { ?>
+            <?php if($video || $headerImage) { ?>
             <div class="videoContainer">
+                <?php
+                $imageObject = OOMedia::getMediaByFileName($headerImage);
+                ?>
+                <?php if($isSsa) { ?>
                 <video autoplay muted loop>
                     <source src="<?php echo seo42::getMediaFile($video); ?>" type="video/mp4">
+                    <div class="headerImage focuspoint" data-focus-x="0"
+                         data-focus-y="0"
+                         data-image-w="<?php echo $imageObject->getWidth(); ?>"
+                         data-image-h="<?php echo $imageObject->getHeight(); ?>">
+                        <img src="<?php echo seo42::getImageManagerFile($headerImage, 'headerImage'); ?>" alt="" />
+                    </div>
                 </video>
+                <?php
+                }
+                else { ?>
+                    <div class="headerImage focuspoint" data-focus-x="0"
+                         data-focus-y="0"
+                         data-image-w="<?php echo $imageObject->getWidth(); ?>"
+                         data-image-h="<?php echo $imageObject->getHeight(); ?>">
+                        <img src="<?php echo seo42::getImageManagerFile($headerImage, 'headerImage'); ?>" alt="" />
+                    </div>
+                <?php } ?>
             </div>
             <?php } ?>
 
@@ -111,6 +137,7 @@ $imprint = OOArticle::getArticleById(7);
     <script src="<?php echo seo42::getJSFile('jquery-1.11.1.min.js'); ?>"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/jquery-focuspoint/js/jquery.focuspoint.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script src="<?php echo seo42::getJSFile('slimbox2.js'); ?>"></script>
     <script src="<?php echo seo42::getJSFile('main.js'); ?>"></script>
 </body>

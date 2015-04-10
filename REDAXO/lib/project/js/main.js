@@ -41,12 +41,16 @@ function scrollToContent() {
 function updateHeaderHeight() {
     var $window = $(window);
     var $header = $('header');
+    var windowHeight = $(window).height();
+    if($header.hasClass('subSite')) {
+        windowHeight = windowHeight * 0.7;
+    }
     if($window.width() > 767) {
         var $nav = $('.navbar');
         var height = 400;
 
-        if($window.height() > height) {
-            height = $window.height();
+        if(windowHeight > height) {
+            height = windowHeight;
             height-= $nav.height();
         }
 
