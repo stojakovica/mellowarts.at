@@ -11,7 +11,7 @@
         $teaserText = $a->getValue('art_teaser_text');
         $teaserImage = $a->getValue('art_teaser_image');
         ?>
-        <div class="row">
+        <div class="row articleItem">
             <div class="col-sm-4">
                 <a href="<?php echo $url; ?>">
                     <img src="<?php echo seo42::getImageManagerFile($teaserImage, 'bootstrap-4'); ?>" class="img-responsive"/>
