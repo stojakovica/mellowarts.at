@@ -84,16 +84,17 @@ if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|c
 
             <?php
             $imageObject = OOMedia::getMediaByFileName($headerImage);
+            $focusX = $imageObject->getValue('med_focuspoint_x') ? $imageObject->getValue('med_focuspoint_x') : "0";
+            $focusY = $imageObject->getValue('med_focuspoint_y') ? $imageObject->getValue('med_focuspoint_y') : "0";
             if(!$isMobile && ($video || $headerImage)) { ?>
             <div class="videoContainer">
                 <?php
-                $imageObject = OOMedia::getMediaByFileName($headerImage);
                 ?>
                 <?php if($isSsa) { ?>
                 <video autoplay muted loop>
                     <source src="<?php echo seo42::getMediaFile($video); ?>" type="video/mp4">
-                    <div class="headerImage focuspoint" data-focus-x="0"
-                         data-focus-y="0"
+                    <div class="headerImage focuspoint" data-focus-x="<?php echo $focusX; ?>"
+                         data-focus-y="<?php echo $focusY; ?>"
                          data-image-w="<?php echo $imageObject->getWidth(); ?>"
                          data-image-h="<?php echo $imageObject->getHeight(); ?>">
                         <img src="<?php echo seo42::getImageManagerFile($headerImage, 'headerImage'); ?>" alt="" />
@@ -102,8 +103,8 @@ if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|c
                 <?php
                 }
                 else { ?>
-                    <div class="headerImage focuspoint" data-focus-x="0"
-                         data-focus-y="0"
+                    <div class="headerImage focuspoint" data-focus-x="<?php echo $focusX; ?>"
+                         data-focus-y="<?php echo $focusY; ?>"
                          data-image-w="<?php echo $imageObject->getWidth(); ?>"
                          data-image-h="<?php echo $imageObject->getHeight(); ?>">
                         <img src="<?php echo seo42::getImageManagerFile($headerImage, 'headerImage'); ?>" alt="" />
@@ -113,8 +114,8 @@ if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|c
             <?php } ?>
 
             <?php if($isMobile) { ?>
-                <div class="headerImageMobile focuspoint" data-focus-x="0"
-                     data-focus-y="0"
+                <div class="headerImageMobile focuspoint" data-focus-x="<?php echo $focusX; ?>"
+                     data-focus-y="<?php echo $focusY; ?>"
                      data-image-w="<?php echo $imageObject->getWidth(); ?>"
                      data-image-h="<?php echo $imageObject->getHeight(); ?>">
                     <img src="<?php echo seo42::getImageManagerFile($headerImage, 'headerImage'); ?>" alt="" />
