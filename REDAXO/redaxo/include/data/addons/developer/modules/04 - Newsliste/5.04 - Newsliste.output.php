@@ -16,7 +16,7 @@ if(!$REX['REDAXO']) {
             <div class="carousel-inner" role="listbox">
                 <?php
                 $i = 0;
-                foreach($news as $n) { ?>
+                foreach(array_reverse($news) as $n) { ?>
                     <div class="item text-center <?php if($i == 0) echo 'active'; ?>">
                         <div class="img">
                             <?php if($n['image']) { ?>
@@ -42,6 +42,6 @@ if(!$REX['REDAXO']) {
             </a>
         </div>
     </div>
-    <?php
+<?php
 }
 ?>
