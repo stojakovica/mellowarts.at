@@ -3,7 +3,7 @@
     $curArt = OOArticle::getArticleById($this->article_id);
     $parentCategory = $curArt->getCategory();
     /** @var OOArticle $a */
-    foreach ($parentCategory->getArticles(true) as $a) {
+    foreach (array_reverse($parentCategory->getArticles(true)) as $a) {
         if($a->isStartArticle()) continue;
 
         $name = $a->getName();
